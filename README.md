@@ -14,8 +14,9 @@ This creates a PWM waveform where the width of the HIGH pulse changes depending 
 For instance: If the duty value is 5, the PWM signal will be HIGH for 5 counts out of 10 counts, which gives a 50% duty cycle.
 
 Example counter and output behavior:
-Counter : 0 1 2 3 4 5 6 7 8 9
-PWM     : 1 1 1 1 1 0 0 0 0 0
+
+Counter :0 1 2 3 4 5 6 7 8 9                                                                        
+PWMval :1 1 1 1 1 0 0 0 0 0
 
 Duty Cycle: 5 / 10 = 50%
 
