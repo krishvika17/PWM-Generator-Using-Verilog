@@ -15,7 +15,7 @@ For instance: If the duty value is 5, the PWM signal will be HIGH for 5 counts o
 
 Example counter and output behavior:
 
-counter : 0 1 2 3 4 5 6 7 8 9
+CTR : 0 1 2 3 4 5 6 7 8 9
 
 PWM     :1 1 1 1 1 0 0 0 0 0
 
