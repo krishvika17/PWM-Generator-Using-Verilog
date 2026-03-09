@@ -17,7 +17,7 @@ Example counter and output behavior:
 
 counter : 0 1 2 3 4 5 6 7 8 9
 
-PWM     : 1 1 1 1 1 0 0 0 0 0
+PWM     :   1 1 1 1 1 0 0 0 0 0
 
 Duty Cycle: 5 / 10 = 50%
 
