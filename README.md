@@ -33,5 +33,5 @@ Duty Cycle: 5 / 10 = 50%
 - GTKWave – Waveform analysis
 - VS Code – Code editing
 
-##**AUTHOR:**
+## **AUTHOR:** 
 Krishvika
