@@ -28,8 +28,7 @@ Duty Cycle: 5 / 10 = 50%
 - README.md : Project documentation describing the design, working principle, and simulation process.
 
 ## **TOOLS USED:**
-
-- Verilog HDL – RTL design and modeling
+- Xilinx Vivado – Synthesis tool for RTL schematics
 - Icarus Verilog (iverilog) – Compilation and simulation
 - GTKWave – Waveform analysis
-- VS Code – Code editing 
+- VS Code – Code editing
