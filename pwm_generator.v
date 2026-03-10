@@ -33,5 +33,3 @@ module pwm_generator(
     assign pwm_out = (counter < duty);
 
 endmodule
-
-💡 If you want, I can also give you a similarly well-commented tb_pwm.v testbench so both files in your repo look professional.
