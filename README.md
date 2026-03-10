@@ -32,3 +32,6 @@ Duty Cycle: 5 / 10 = 50%
 - Icarus Verilog (iverilog) – Compilation and simulation
 - GTKWave – Waveform analysis
 - VS Code – Code editing
+
+##**AUTHOR:**
+Krishvika
