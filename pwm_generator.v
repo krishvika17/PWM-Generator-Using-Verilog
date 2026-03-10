@@ -1,24 +1,37 @@
 module pwm_generator(
-    input clk,
-    input reset,
-    input [3:0] duty,   // duty cycle (0–9)
-    output pwm_out
+    input clk,              // System clock input
+    input reset,            // Reset signal to initialize counter
+    input [3:0] duty,       // 4-bit duty cycle control input
+    output pwm_out          // PWM output signal
 );
 
-reg [3:0] counter = 0;
+    // ---------------------------------------------------------
+    // Internal register declaration
+    // 4-bit counter used to generate PWM time base
+    // ---------------------------------------------------------
+    reg [3:0] counter = 0;
 
-// counter logic
-always @(posedge clk or posedge reset)
-begin
-    if(reset)
-        counter <= 0;
-    else if(counter == 9)
-        counter <= 0;
-    else
-        counter <= counter + 1;
-end
+    // ---------------------------------------------------------
+    // Counter logic
+    // Counter increments at every rising clock edge
+    // Counts from 0 to 9 and then resets to 0
+    // ---------------------------------------------------------
+    always @(posedge clk or posedge reset)
+    begin
+        if(reset)
+            counter <= 0;           // Reset counter
+        else if(counter == 9)
+            counter <= 0;           // Restart PWM period
+        else
+            counter <= counter + 1; // Increment counter
+    end
 
-// PWM output
-assign pwm_out = (counter < duty);
+    // ---------------------------------------------------------
+    // Comparator logic
+    // Generates PWM output based on duty cycle comparison
+    // ---------------------------------------------------------
+    assign pwm_out = (counter < duty);
 
 endmodule
+
+💡 If you want, I can also give you a similarly well-commented tb_pwm.v testbench so both files in your repo look professional.
