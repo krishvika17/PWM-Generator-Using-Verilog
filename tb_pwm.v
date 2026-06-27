@@ -2,39 +2,96 @@
 
 module tb_pwm;
 
-reg clk;
-reg reset;
-reg [3:0] duty;
-wire pwm_out;
+    // Testbench signals
+    reg clk;
+    reg reset;
+    reg enable;
+    reg [3:0] duty;
+    wire pwm_out;
 
-// instantiate module
-pwm_generator uut(
-    .clk(clk),
-    .reset(reset),
-    .duty(duty),
-    .pwm_out(pwm_out)
-);
+    // ---------------------------------------------------------
+    // Instantiate the PWM Generator
+    // ---------------------------------------------------------
+    pwm_generator uut (
+        .clk(clk),
+        .reset(reset),
+        .enable(enable),
+        .duty(duty),
+        .pwm_out(pwm_out)
+    );
 
-// clock generation
-initial begin
-    clk = 0;
-    forever #5 clk = ~clk;
-end
+    // ---------------------------------------------------------
+    // Clock Generation
+    // Generates a clock with a period of 10 ns
+    // ---------------------------------------------------------
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
 
-// test sequence
-initial begin
-    $dumpfile("wave.vcd");
-    $dumpvars(0,tb_pwm);
+    // ---------------------------------------------------------
+    // Test Sequence
+    // ---------------------------------------------------------
+    initial begin
 
-    reset = 1;
-    duty = 3;
+        // Generate waveform file
+        $dumpfile("wave.vcd");
+        $dumpvars(0, tb_pwm);
 
-    #20 reset = 0;
+        // Initialize signals
+        reset  = 1;
+        enable = 0;
+        duty   = 0;
 
-    #100 duty = 5;   // 50%
-    #100 duty = 8;   // 80%
+        // Hold reset for 20 ns
+        #20;
+        reset  = 0;
+        enable = 1;
 
-    #100 $finish;
-end
+        // -----------------------------
+        // Test different duty cycles
+        // -----------------------------
+
+        $display("Testing Duty = 0%");
+        duty = 4'd0;
+        #160;
+
+        $display("Testing Duty = 6.25%");
+        duty = 4'd1;
+        #160;
+
+        $display("Testing Duty = 25%");
+        duty = 4'd4;
+        #160;
+
+        $display("Testing Duty = 50%");
+        duty = 4'd8;
+        #160;
+
+        $display("Testing Duty = 75%");
+        duty = 4'd12;
+        #160;
+
+        $display("Testing Duty = 93.75%");
+        duty = 4'd15;
+        #160;
+
+        // -----------------------------
+        // Test Enable Signal
+        // -----------------------------
+
+        $display("Disabling PWM...");
+        enable = 0;
+        #100;
+
+        $display("Enabling PWM...");
+        enable = 1;
+        #160;
+
+        $display("Simulation Completed Successfully.");
+
+        $finish;
+
+    end
 
 endmodule
