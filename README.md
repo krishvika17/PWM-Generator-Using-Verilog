@@ -1,37 +1,149 @@
-# PWM-Generator-Using-Verilog
-This project implements a Pulse Width Modulation (PWM) generator using Verilog HDL. The circuit generates a PWM signal whose duty cycle can be adjusted using a duty input value. PWM is widely used in digital electronics for controlling power in applications such as motor speed control, LED brightness control, and switching power supplies.
+# PWM Generator Using Verilog HDL
 
-## **WORKING PRINCIPLE:**
+This project implements a **4-bit Pulse Width Modulation (PWM) Generator** using **Verilog HDL**. The design generates a PWM signal whose duty cycle can be adjusted using a 4-bit duty cycle input. An additional **enable** signal allows the PWM generation to be paused without resetting the counter.
 
-- The PWM signal is generated using a counter and comparator.  
-- A clock signal drives a 4-bit counter.
-- The counter counts from 0 to 9 repeatedly.
-- The counter value is compared with the duty cycle input.
-- If the counter value is less than the duty value, the output pwm_out is HIGH.
-- If the counter value is greater than or equal to the duty value, the output becomes LOW.
+The project demonstrates the complete digital design workflow, including **RTL design, functional simulation, waveform verification, RTL elaboration, and FPGA synthesis**.
 
-This creates a PWM waveform where the width of the HIGH pulse changes depending on the duty cycle value.
-For instance: If the duty value is 5, the PWM signal will be HIGH for 5 counts out of 10 counts, which gives a 50% duty cycle.
+---
 
-Example counter and output behavior:
+# Working Principle
 
-Counter :0 1 2 3 4 5 6 7 8 9                                                                        
-PWMval :1 1 1 1 1 0 0 0 0 0
+The PWM signal is generated using a **4-bit synchronous counter** and a **comparator**.
 
-Duty Cycle: 5 / 10 = 50%
+* A clock signal drives the 4-bit counter.
+* The counter counts from **0 to 15** repeatedly.
+* The **enable** signal controls whether the counter increments.
+* The counter value is continuously compared with the duty cycle input.
+* If the counter value is **less than** the duty value, the PWM output (`pwm_out`) is **HIGH**.
+* Otherwise, the PWM output becomes **LOW**.
 
-## **PROJECT FILES:**
+This comparison changes the width of the HIGH pulse, thereby controlling the duty cycle of the PWM signal.
 
-- pwm_generator.v : Contains the Verilog module implementing the PWM generator logic using a counter and comparator.
-- tb_pwm.v : Testbench used to simulate the PWM generator. It generates the clock, applies reset, and changes the duty cycle values.
-- WAVEFORM.png : Screenshot of the PWM waveform obtained from simulation using GTKWave.
-- README.md : Project documentation describing the design, working principle, and simulation process.
+---
 
-## **TOOLS USED:**
-- Xilinx Vivado – Synthesis tool for RTL schematics
-- Icarus Verilog (iverilog) – Compilation and simulation
-- GTKWave – Waveform analysis
-- VS Code – Code editing
+# Example Operation
 
-## **AUTHOR:** 
-Krishvika
+Suppose the duty cycle is set to **8**.
+
+Counter:
+
+```
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+```
+
+PWM Output:
+
+```
+1 1 1 1 1 1 1 1 0 0  0  0  0  0  0  0
+```
+
+Duty Cycle:
+
+```
+8 / 16 = 50%
+```
+
+Similarly,
+
+| Duty Value | Approximate Duty Cycle |
+| ---------- | ---------------------: |
+| 0          |                     0% |
+| 1          |                  6.25% |
+| 4          |                    25% |
+| 8          |                    50% |
+| 12         |                    75% |
+| 15         |                 93.75% |
+
+---
+
+# Features
+
+* 4-bit PWM Generator using Verilog HDL
+* Programmable duty cycle (0–15)
+* Enable control to pause and resume PWM generation
+* Asynchronous reset support
+* Functional simulation using Icarus Verilog
+* Waveform verification using GTKWave
+* RTL elaboration using Xilinx Vivado
+* FPGA synthesis using Xilinx Vivado
+
+---
+
+# Project Files
+
+```
+PWM_Generator/
+│
+├── pwm_generator.v
+├── tb_pwm.v
+├── README.md
+│
+└── screenshots/
+    ├── gtkwave.png
+    ├── rtl_elaborated.png
+    └── synthesized_design.png
+```
+
+### File Description
+
+* **pwm_generator.v** – Verilog implementation of the PWM generator.
+* **tb_pwm.v** – Testbench used to verify different duty cycle values and enable functionality.
+* **gtkwave.png** – Functional simulation waveform generated using GTKWave.
+* **rtl_elaborated.png** – RTL schematic generated using Xilinx Vivado.
+* **synthesized_design.png** – Synthesized FPGA design generated using Xilinx Vivado.
+
+---
+
+# Tools Used
+
+* **Verilog HDL** – Hardware Description Language
+* **Icarus Verilog (iverilog)** – Compilation and simulation
+* **GTKWave** – Waveform visualization
+* **Xilinx Vivado** – RTL elaboration and synthesis
+* **Visual Studio Code** – Code editing
+
+---
+
+# Applications
+
+PWM is widely used in digital and embedded systems for:
+
+* LED brightness control
+* DC motor speed control
+* Servo motor control
+* Fan speed control
+* Switching power supplies
+* Embedded control systems
+
+---
+
+# Simulation Results
+
+The project was verified through:
+
+* Functional simulation using Icarus Verilog
+* Waveform analysis using GTKWave
+* RTL elaboration in Xilinx Vivado
+* FPGA synthesis in Xilinx Vivado
+
+Simulation screenshots are available in the **screenshots** folder.
+
+---
+
+# Learning Outcomes
+
+This project helped in understanding:
+
+* Verilog HDL fundamentals
+* Sequential and combinational logic
+* Counter-based PWM generation
+* Testbench development
+* Functional verification
+* RTL elaboration
+* FPGA synthesis workflow
+
+---
+
+# Author
+
+**Krishvika**
