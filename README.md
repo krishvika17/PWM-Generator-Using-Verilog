@@ -71,17 +71,29 @@ Similarly,
 
 # Project Files
 
-```
+## Project Structure
+
+```text
 PWM_Generator/
 │
-├── pwm_generator.v
-├── tb_pwm.v
 ├── README.md
+├── LICENSE
+├── .gitignore
 │
-└── screenshots/
-    ├── gtkwave.png
-    ├── rtl_elaborated.png
-    └── synthesized_design.png
+├── src/
+│   └── pwm_generator.v
+│
+├── testbench/
+│   └── tb_pwm.v
+│
+├── screenshots/
+│   ├── gtkwave_waveform.png
+│   ├── rtl_schematic.png
+│   ├── synthesized_schematic.png
+│   └── simulation_output.png
+│
+└── waveforms/
+    └── wave.vcd
 ```
 
 ### File Description
