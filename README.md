@@ -98,11 +98,13 @@ PWM_Generator/
 
 ### File Description
 
-* **pwm_generator.v** – Verilog implementation of the PWM generator.
-* **tb_pwm.v** – Testbench used to verify different duty cycle values and enable functionality.
-* **gtkwave.png** – Functional simulation waveform generated using GTKWave.
-* **rtl_elaborated.png** – RTL schematic generated using Xilinx Vivado.
-* **synthesized_design.png** – Synthesized FPGA design generated using Xilinx Vivado.
+* **pwm_generator.v** – Verilog implementation of the PWM generator with configurable 4-bit duty cycle, enable, and reset functionality.
+* **tb_pwm.v** – Testbench that verifies PWM operation across multiple duty cycle values and enable/disable conditions.
+* **gtkwave_waveform.png** – GTKWave simulation waveform demonstrating PWM output for different duty cycle settings.
+* **rtl_schematic.png** – RTL schematic generated after elaboration in Xilinx Vivado, illustrating the high-level design architecture.
+* **synthesized_schematic.png** – Post-synthesis schematic generated in Xilinx Vivado, showing the optimized FPGA logic implementation.
+* **simulation_output.png** – Console output confirming successful execution of the testbench and verification of multiple duty cycle configurations.
+* **wave.vcd** – Value Change Dump (VCD) file generated during simulation, used to visualize signal waveforms in GTKWave.
 
 ---
 
