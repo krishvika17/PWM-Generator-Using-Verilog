@@ -79,13 +79,8 @@ PWM_Generator/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
-│
-├── src/
-│   └── pwm_generator.v
-│
-├── testbench/
-│   └── tb_pwm.v
-│
+├── pwm_generator.v
+├── tb_pwm.v
 ├── screenshots/
 │   ├── gtkwave_waveform.png
 │   ├── rtl_schematic.png
